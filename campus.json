@@ -1,0 +1,292 @@
+{
+  "description": "Approximate weighted campus graph derived from the Assignment X_03 map. Weights are walking-distance estimates in metres.",
+  "nodes": [
+    {
+      "name": "Playground of Technology Campus",
+      "x": 0,
+      "y": 2
+    },
+    {
+      "name": "Parking Area",
+      "x": 2,
+      "y": 0
+    },
+    {
+      "name": "Tower 2 Front Entry",
+      "x": 2,
+      "y": 2
+    },
+    {
+      "name": "Tower 2 Rear Entry",
+      "x": 4,
+      "y": 1
+    },
+    {
+      "name": "Library",
+      "x": 6,
+      "y": 1
+    },
+    {
+      "name": "CSE Laboratory",
+      "x": 3,
+      "y": 2
+    },
+    {
+      "name": "CSE_Reflxon Room",
+      "x": 2.7,
+      "y": 3
+    },
+    {
+      "name": "CSE_AKC Seminar Hall",
+      "x": 4,
+      "y": 3
+    },
+    {
+      "name": "Lift Area",
+      "x": 5,
+      "y": 3
+    },
+    {
+      "name": "Garden Area",
+      "x": 6,
+      "y": 4
+    },
+    {
+      "name": "New Building 1 (Design Lab)",
+      "x": 9,
+      "y": 4
+    },
+    {
+      "name": "New Building 2 (Workshop Building)",
+      "x": 7.5,
+      "y": 7
+    },
+    {
+      "name": "Power Area",
+      "x": 2,
+      "y": 6
+    },
+    {
+      "name": "Reception of Calcutta University",
+      "x": 1,
+      "y": 7
+    },
+    {
+      "name": "Canteen, CU Technology Campus",
+      "x": 1,
+      "y": 9
+    },
+    {
+      "name": "CRNI Centre (Nano Technology)",
+      "x": 4,
+      "y": 7
+    },
+    {
+      "name": "Auditorium Hall",
+      "x": 5,
+      "y": 9
+    },
+    {
+      "name": "Entry Gate 1 (G1)",
+      "x": 2,
+      "y": 11
+    },
+    {
+      "name": "Entry Gate 2 (G2)",
+      "x": 11,
+      "y": 11
+    },
+    {
+      "name": "Entry Gate 3 (G3)",
+      "x": 11,
+      "y": 6
+    },
+    {
+      "name": "Entry Gate 4 (G4)",
+      "x": 11,
+      "y": 0
+    }
+  ],
+  "edges": [
+    {
+      "from": "Playground of Technology Campus",
+      "to": "Parking Area",
+      "weight_m": 120
+    },
+    {
+      "from": "Playground of Technology Campus",
+      "to": "Tower 2 Front Entry",
+      "weight_m": 95
+    },
+    {
+      "from": "Parking Area",
+      "to": "Tower 2 Front Entry",
+      "weight_m": 65
+    },
+    {
+      "from": "Parking Area",
+      "to": "Tower 2 Rear Entry",
+      "weight_m": 90
+    },
+    {
+      "from": "Tower 2 Front Entry",
+      "to": "Tower 2 Rear Entry",
+      "weight_m": 70
+    },
+    {
+      "from": "Tower 2 Front Entry",
+      "to": "Lift Area",
+      "weight_m": 90
+    },
+    {
+      "from": "Tower 2 Rear Entry",
+      "to": "Lift Area",
+      "weight_m": 75
+    },
+    {
+      "from": "Tower 2 Rear Entry",
+      "to": "Library",
+      "weight_m": 80
+    },
+    {
+      "from": "Library",
+      "to": "Lift Area",
+      "weight_m": 55
+    },
+    {
+      "from": "Library",
+      "to": "Garden Area",
+      "weight_m": 180
+    },
+    {
+      "from": "Lift Area",
+      "to": "Garden Area",
+      "weight_m": 85
+    },
+    {
+      "from": "Garden Area",
+      "to": "New Building 1 (Design Lab)",
+      "weight_m": 105
+    },
+    {
+      "from": "New Building 1 (Design Lab)",
+      "to": "Entry Gate 3 (G3)",
+      "weight_m": 70
+    },
+    {
+      "from": "New Building 1 (Design Lab)",
+      "to": "New Building 2 (Workshop Building)",
+      "weight_m": 110
+    },
+    {
+      "from": "New Building 2 (Workshop Building)",
+      "to": "Entry Gate 2 (G2)",
+      "weight_m": 95
+    },
+    {
+      "from": "New Building 2 (Workshop Building)",
+      "to": "Garden Area",
+      "weight_m": 80
+    },
+    {
+      "from": "Entry Gate 3 (G3)",
+      "to": "Entry Gate 4 (G4)",
+      "weight_m": 170
+    },
+    {
+      "from": "Entry Gate 3 (G3)",
+      "to": "Entry Gate 2 (G2)",
+      "weight_m": 120
+    },
+    {
+      "from": "Entry Gate 2 (G2)",
+      "to": "Entry Gate 1 (G1)",
+      "weight_m": 320
+    },
+    {
+      "from": "Garden Area",
+      "to": "CRNI Centre (Nano Technology)",
+      "weight_m": 120
+    },
+    {
+      "from": "CRNI Centre (Nano Technology)",
+      "to": "Power Area",
+      "weight_m": 90
+    },
+    {
+      "from": "CRNI Centre (Nano Technology)",
+      "to": "Auditorium Hall",
+      "weight_m": 75
+    },
+    {
+      "from": "Power Area",
+      "to": "Reception of Calcutta University",
+      "weight_m": 75
+    },
+    {
+      "from": "Power Area",
+      "to": "Canteen, CU Technology Campus",
+      "weight_m": 90
+    },
+    {
+      "from": "Reception of Calcutta University",
+      "to": "Canteen, CU Technology Campus",
+      "weight_m": 65
+    },
+    {
+      "from": "Reception of Calcutta University",
+      "to": "Entry Gate 1 (G1)",
+      "weight_m": 100
+    },
+    {
+      "from": "Canteen, CU Technology Campus",
+      "to": "Entry Gate 1 (G1)",
+      "weight_m": 90
+    },
+    {
+      "from": "Canteen, CU Technology Campus",
+      "to": "Auditorium Hall",
+      "weight_m": 130
+    },
+    {
+      "from": "Auditorium Hall",
+      "to": "New Building 2 (Workshop Building)",
+      "weight_m": 125
+    },
+    {
+      "from": "CSE Laboratory",
+      "to": "CSE_Reflxon Room",
+      "weight_m": 55
+    },
+    {
+      "from": "CSE_Reflxon Room",
+      "to": "CSE_AKC Seminar Hall",
+      "weight_m": 70
+    },
+    {
+      "from": "CSE Laboratory",
+      "to": "CSE_AKC Seminar Hall",
+      "weight_m": 65
+    },
+    {
+      "from": "CSE_AKC Seminar Hall",
+      "to": "Lift Area",
+      "weight_m": 45
+    },
+    {
+      "from": "CSE_Reflxon Room",
+      "to": "Lift Area",
+      "weight_m": 50
+    }
+  ],
+  "cse_zone": [
+    "CSE Laboratory",
+    "CSE_AKC Seminar Hall",
+    "CSE_Reflxon Room"
+  ],
+  "cse_entry": [
+    "Tower 2 Front Entry",
+    "Tower 2 Rear Entry",
+    "Lift Area"
+  ]
+}

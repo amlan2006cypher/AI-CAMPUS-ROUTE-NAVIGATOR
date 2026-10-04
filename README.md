@@ -1,0 +1,142 @@
+# AI Campus Route Navigator — Assignment X_03
+
+AI/ML Laboratory — B.Tech. 5th Semester
+
+This project implements the **AI Campus Route Navigator** specified in Assignment X_03. It converts the supplied CU Technology Campus map into a weighted graph and compares two routing agents:
+
+- **PATHFINDER** — Greedy Best-First Search, `f(n) = h(n)`
+- **ORBIT** — A* Search, `f(n) = g(n) + h(n)`
+
+The project uses only locations visible on the supplied assignment map. The graph, edge weights, and node coordinates are stored in `campus.json`; the search algorithms do not contain a hard-coded campus graph.
+
+## Repository structure
+
+```text
+ai-campus-route-navigator/
+├── main.py
+├── campus_map.py
+├── search.py
+├── agents.py
+├── experiment.py
+├── campus.json
+├── results/
+│   └── results.csv
+├── report/
+│   └── analysis.md
+├── assets/
+│   └── campus_map.png
+├── Brief_Report.pdf
+├── requirements.txt
+└── .gitignore
+```
+
+### Responsibilities
+
+| File | Responsibility |
+|---|---|
+| `campus_map.py` | Loads `campus.json`, stores graph data, computes the shared heuristic, and enforces the CSE-zone rule |
+| `search.py` | From-scratch Greedy Best-First Search and A* implementations |
+| `agents.py` | PATHFINDER and ORBIT agent classes |
+| `experiment.py` | Runs multiple source-destination experiments and writes `results.csv` |
+| `main.py` | Command-line interface and experiment entry point |
+| `campus.json` | Campus nodes, approximate weighted edges, coordinates, and CSE-zone metadata |
+| `results/results.csv` | Actual generated experimental measurements |
+| `report/analysis.md` | Brief analysis and conclusion |
+| `Brief_Report.pdf` | Printable version of the brief report |
+
+## Requirements
+
+- Python 3.10+
+- No external Python packages are required.
+
+## Run
+
+From the repository root:
+
+```bash
+python main.py
+```
+
+Enter a starting location and destination exactly as listed by the program. The program prints both agents' route, total cost, number of explored nodes, and execution time. It then runs the predefined experiments and refreshes:
+
+```text
+results/results.csv
+```
+
+## Algorithms
+
+### PATHFINDER — Greedy Best-First Search
+
+PATHFINDER prioritizes the node with the smallest estimated remaining cost:
+
+```text
+f(n) = h(n)
+```
+
+It therefore focuses on apparent closeness to the destination and does not include the distance already travelled in its priority.
+
+### ORBIT — A* Search
+
+ORBIT combines actual cost and estimated remaining cost:
+
+```text
+f(n) = g(n) + h(n)
+```
+
+`g(n)` is the accumulated walking cost and `h(n)` is the same map-based heuristic used by PATHFINDER.
+
+The heuristic is derived from the approximate map coordinates using straight-line distance. Both agents use exactly the same heuristic so that the comparison isolates the search strategy.
+
+## CSE routing constraint
+
+The assignment requires these three locations to form the CSE zone:
+
+- CSE Laboratory
+- CSE_AKC Seminar Hall
+- CSE_Reflxon Room
+
+A route entering a CSE location must pass through a Tower 2 entry and then Lift Area. Once inside the CSE zone, only CSE locations may be visited until returning to Lift Area. Exiting then proceeds through Lift Area and a Tower 2 entry before reaching other campus locations.
+
+This rule is implemented in `CampusMap.neighbors()` and is therefore enforced during search rather than patched into the final route.
+
+## Experimental results
+
+The predefined experiment contains eight source-destination pairs, including ordinary and CSE-related routes. The program records:
+
+- route
+- agent
+- source
+- destination
+- path
+- total path cost
+- nodes explored
+- execution time
+
+The current generated results show that PATHFINDER explored fewer nodes on average, while ORBIT obtained lower-cost routes on the cases where the two algorithms differed.
+
+### Current aggregate results
+
+| Agent | Average path cost | Average nodes explored |
+|---|---:|---:|
+| PATHFINDER | 393.75 m | 4.88 |
+| ORBIT | 378.75 m | 10.50 |
+
+On the eight tested source-destination pairs, the agents selected different routes for three pairs. In those three cases, ORBIT found the lower-cost route.
+
+This supports the central question of the assignment: a location that looks closest according to `h(n)` does not necessarily lead to the lowest-cost complete route. Greedy search can commit to an apparently attractive branch, while A* also accounts for the cost already accumulated.
+
+Execution time is included in `results.csv`. Because the graph is very small, individual timings are in the microsecond range and are sensitive to machine load and Python runtime conditions.
+
+## Important design choices
+
+- The campus graph is loaded from JSON rather than embedded in the search algorithms.
+- No external pathfinding library is used.
+- Greedy Best-First Search and A* are implemented directly using Python's `heapq` priority queue.
+- The final routes are generated by the algorithms; they are not hard-coded.
+- Both agents receive the same graph and heuristic.
+- Edge weights are approximate walking-distance estimates derived from the supplied campus layout.
+- The graph intentionally contains only locations shown on the assignment map.
+
+## Files to submit
+
+The public GitHub repository should contain the complete project, including source code, `campus.json`, generated `results.csv`, README, and the brief report.
